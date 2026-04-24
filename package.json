@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p ${PORT:-3000}",
     "lint": "eslint",
     "generate:og-image": "ts-node scripts/generate-og-image.ts",
     "seo:check": "npm run build && echo 'SEO build completed successfully'",
