@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
@@ -16,6 +16,12 @@ const jetbrains = JetBrains_Mono( {
 } );
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://vndigital.pe";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "VN Digital – Soluciones Web para Comunicación y Gestión Digital",
@@ -44,11 +50,6 @@ export const metadata: Metadata = {
   metadataBase: new URL( baseUrl ),
   alternates: {
     canonical: "/",
-  },
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
   },
   openGraph: {
     type: "website",
