@@ -6,9 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate:og-image": "ts-node scripts/generate-og-image.ts",
+    "seo:check": "npm run build && echo 'SEO build completed successfully'",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "next": "16.2.4",
     "nodemailer": "^8.0.5",
     "react": "19.2.4",
