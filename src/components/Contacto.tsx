@@ -82,7 +82,7 @@ export default function Contacto() {
             <div className="space-y-6 mb-12">
               {/* Email */ }
               <a
-                href="mailto:contacto@vndigital.pe"
+                href="mailto:vndigital.pe@gmail.com"
                 className="group p-6 rounded-2xl bg-white border border-gray-200 hover:border-primary/30 hover:shadow-lg hover:-translate-y-1 transition-all"
               >
                 <div className="flex items-start gap-4">
@@ -93,7 +93,7 @@ export default function Contacto() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 font-semibold uppercase tracking-widest mb-1">Correo electrónico</p>
-                    <p className="text-primary-dark font-semibold group-hover:text-primary transition-colors">contacto@vndigital.pe</p>
+                    <p className="text-primary-dark font-semibold group-hover:text-primary transition-colors">vndigital.pe@gmail.com</p>
                     <p className="text-xs text-gray-500 mt-1">Respuesta en menos de 24 horas</p>
                   </div>
                 </div>
