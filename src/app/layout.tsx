@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
 
 const inter = Inter( {
@@ -113,7 +112,7 @@ export default function RootLayout( {
               logo: "https://vndigital.pe/og-image.jpg",
               description:
                 "Soluciones web para comunicación y gestión digital, adaptadas a las necesidades reales de instituciones y negocios.",
-              email: `${process.env.SMTP_TO}`,
+              email: `${ process.env.SMTP_TO }`,
               foundingDate: "2022",
               areaServed: [ "PE", "LA" ],
             } ),
@@ -129,7 +128,6 @@ export default function RootLayout( {
       </head>
       <body className="flex min-h-screen flex-col" suppressHydrationWarning>
         { children }
-        <Analytics />
       </body>
     </html>
   );
