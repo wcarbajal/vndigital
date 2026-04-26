@@ -113,7 +113,7 @@ export default function RootLayout( {
               logo: "https://vndigital.pe/og-image.jpg",
               description:
                 "Soluciones web para comunicación y gestión digital, adaptadas a las necesidades reales de instituciones y negocios.",
-              email: "contacto@vndigital.pe",
+              email: `${process.env.SMTP_TO}`,
               foundingDate: "2022",
               areaServed: [ "PE", "LA" ],
             } ),

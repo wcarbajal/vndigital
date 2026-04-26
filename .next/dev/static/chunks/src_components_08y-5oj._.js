@@ -208,7 +208,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var _s = __turbopack_context__.k.signature();
 "use client";
 ;
-const WHATSAPP_NUMBER = "51999999999"; // Reemplazar con número real
+const WHATSAPP_NUMBER = "51926520252"; // Reemplazar con número real
 const WHATSAPP_MESSAGE = encodeURIComponent("Hola VN Digital, me interesa conocer más sobre sus servicios web.");
 function Contacto() {
     _s();

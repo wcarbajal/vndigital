@@ -7,7 +7,6 @@ const navLinks = [
   { label: "Inicio", href: "#inicio" },
   { label: "Nosotros", href: "#nosotros" },
   { label: "Servicios", href: "#servicios" },
-  // { label: "Soluciones", href: "#soluciones" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -23,14 +22,16 @@ export default function Header() {
 
   return (
     <header
-      className={ `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${ scrolled ? "bg-primary-dark shadow-lg" : "bg-white border-b border-gray-100"
+      className={ `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${ scrolled
+        ? "bg-primary-dark shadow-lg backdrop-blur-md bg-opacity-95"
+        : "bg-white border-b border-gray-100"
         }` }
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */ }
-        <Link href="#inicio" className="flex items-center gap-2">
+        <Link href="#inicio" className="flex items-center gap-2 group">
           <span
-            className={ `text-xl font-bold tracking-tight ${ scrolled ? "text-white" : "text-primary-dark"
+            className={ `text-xl font-bold tracking-tight transition-colors ${ scrolled ? "text-white group-hover:text-success" : "text-primary-dark group-hover:text-primary"
               }` }
           >
             VN<span className="text-primary">Digital</span>
@@ -43,17 +44,22 @@ export default function Header() {
             <Link
               key={ link.href }
               href={ link.href }
-              className={ `text-sm font-medium transition-colors ${ scrolled
+              className={ `text-sm font-medium transition-colors relative group ${ scrolled
                 ? "text-gray-300 hover:text-white"
                 : "text-gray-dark hover:text-primary"
                 }` }
             >
               { link.label }
+              <span className={ `absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full ${ scrolled ? "bg-success" : "bg-primary"
+                }` } />
             </Link>
           ) ) }
           <Link
             href="#contacto"
-            className="bg-primary text-white text-sm font-medium px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className={ `text-sm font-medium px-6 py-2 rounded-lg transition-all hover:shadow-lg hover:-translate-y-0.5 ${ scrolled
+              ? "bg-success text-white hover:bg-green-600"
+              : "bg-primary text-white hover:bg-blue-700"
+              }` }
           >
             Solicitar información
           </Link>
@@ -61,7 +67,8 @@ export default function Header() {
 
         {/* Mobile hamburger */ }
         <button
-          className={ `md:hidden p-2 rounded ${ scrolled ? "text-white" : "text-gray-dark" }` }
+          className={ `md:hidden p-2 rounded transition-colors ${ scrolled ? "text-white hover:bg-white/10" : "text-gray-dark hover:bg-gray-100"
+            }` }
           onClick={ () => setMenuOpen( !menuOpen ) }
           aria-label="Abrir menú"
         >
@@ -77,24 +84,29 @@ export default function Header() {
 
       {/* Mobile menu */ }
       { menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-6 pb-4">
-          { navLinks.map( ( link ) => (
+        <div className={ `md:hidden border-t ${ scrolled ? "border-white/10 bg-primary-dark" : "border-gray-100 bg-white" }` }>
+          <div className="px-6 py-4 space-y-3">
+            { navLinks.map( ( link ) => (
+              <Link
+                key={ link.href }
+                href={ link.href }
+                className={ `block py-2 px-4 rounded-lg transition-all ${ scrolled
+                  ? "text-gray-300 hover:bg-white/10 hover:text-white"
+                  : "text-gray-dark hover:bg-gray-100"
+                  }` }
+                onClick={ () => setMenuOpen( false ) }
+              >
+                { link.label }
+              </Link>
+            ) ) }
             <Link
-              key={ link.href }
-              href={ link.href }
-              className="block py-3 text-sm font-medium text-gray-dark hover:text-primary border-b border-gray-50"
+              href="#contacto"
+              className="block py-2 px-4 rounded-lg bg-primary text-white font-medium hover:bg-blue-700 transition-colors text-center mt-2"
               onClick={ () => setMenuOpen( false ) }
             >
-              { link.label }
+              Solicitar información
             </Link>
-          ) ) }
-          <Link
-            href="#contacto"
-            className="block mt-4 text-center bg-primary text-white text-sm font-medium px-5 py-2 rounded-lg"
-            onClick={ () => setMenuOpen( false ) }
-          >
-            Solicitar información
-          </Link>
+          </div>
         </div>
       ) }
     </header>

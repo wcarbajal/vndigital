@@ -49,10 +49,22 @@ const problemas = [
 
 export default function Problemas() {
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="bg-white py-20 relative overflow-hidden">
+      <style>{ `
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .card-animate { animation: fadeInUp 0.6s ease-out forwards; }
+      `}</style>
+
+      {/* Decoraciones de fondo */ }
+      <div className="absolute top-0 right-0 w-96 h-96 bg-danger/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="text-center mb-14">
-          <span className="inline-block bg-blue-50 text-primary text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4">
+          <span className="inline-block bg-blue-50 text-primary text-xs font-semibold uppercase tracking-widest px-3 py-1 rounded-full mb-4 hover:shadow-md transition-all">
             Problemas que abordamos
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-primary-dark mb-4">
@@ -66,13 +78,22 @@ export default function Problemas() {
           { problemas.map( ( item, i ) => (
             <div
               key={ i }
-              className="bg-white rounded-xl p-6 border border-gray-100 hover:border-primary/20 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+              className="card-animate relative bg-white rounded-2xl p-6 border border-gray-100 hover:border-danger/20 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group overflow-hidden"
+              style={ { animationDelay: `${ i * 0.1 }s` } }
             >
-              <div className="bg-blue-50 text-primary w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300 [&>svg]:transition-colors [&>svg]:duration-300">
-                { item.icon }
+              {/* Fondo gradiente en hover */ }
+              <div className="absolute inset-0 bg-gradient-to-br from-danger/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+              <div className="relative">
+                <div className="bg-blue-50 text-primary w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:bg-danger group-hover:text-white group-hover:[&>svg]:scale-110 transition-all duration-300 [&>svg]:transition-transform [&>svg]:duration-300">
+                  { item.icon }
+                </div>
+                <h3 className="text-base font-semibold text-primary-dark mb-2 group-hover:text-danger transition-colors duration-300">{ item.titulo }</h3>
+                <p className="text-sm text-gray-dark leading-relaxed">{ item.descripcion }</p>
               </div>
-              <h3 className="text-base font-semibold text-primary-dark mb-2">{ item.titulo }</h3>
-              <p className="text-sm text-gray-dark leading-relaxed">{ item.descripcion }</p>
+
+              {/* Indicador visual */ }
+              <div className="absolute top-0 right-0 w-1 h-0 bg-danger group-hover:h-full transition-all duration-300 rounded-full" />
             </div>
           ) ) }
         </div>
